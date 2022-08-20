@@ -8,11 +8,19 @@ public class PartyMemberUI : MonoBehaviour
 {
     public TMP_Text levelText;
 
-    Monster currentMonster;
+    public Monster currentMonster;
+
+    Image monsterSprite;
+
+    private void Awake()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
+
 
     }
 
@@ -24,15 +32,28 @@ public class PartyMemberUI : MonoBehaviour
 
     public void SetMonster(Monster monster)
     {
+        monsterSprite = GetComponent<Image>();
+
         currentMonster = monster;
-        GetComponent<Image>().sprite = currentMonster.Base.Icon;
+        Debug.Log(monsterSprite);
+
+        monsterSprite.sprite = currentMonster.Base.Icon;
         levelText.text = "Lvl: " + currentMonster.Level;
+
+        if (monster.HP <= 0)
+        {
+            monsterSprite.color = Color.gray;
+        }
+        else
+        {
+            monsterSprite.color = Color.white;
+        }
 
     }
 
     public void HandleClick()
     {
-        if (currentMonster != null)
+        if (currentMonster != null && currentMonster.HP > 0)
         {
             Debug.Log("Clicked on " + currentMonster.Base.Name);
             currentMonster = PartyController.instance.SendOutActiveMonster(currentMonster);

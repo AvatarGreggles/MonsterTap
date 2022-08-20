@@ -21,18 +21,18 @@ MonoBehaviour:
   monsterType1: 5
   monsterType2: 8
   maxHP: 30
-  attack: 5
+  attack: 45
   defense: 5
   spAttack: 5
   spDefense: 5
   speed: 5
-  expYield: 10
+  expYield: 5
   catchRate: 255
   learnableAttacks:
-  - attackBase: {fileID: 11400000, guid: d4ae27ff2509c4d66b9e65625eb498e1, type: 2}
+  - attackBase: {fileID: 11400000, guid: 6e5c7cabe1ba74cecb6eaaa8b09c37e0, type: 2}
     level: 1
   - attackBase: {fileID: 11400000, guid: cee133078033e41b6a932fa7020bcb35, type: 2}
-    level: 1
+    level: 4
   - attackBase: {fileID: 11400000, guid: d4ae27ff2509c4d66b9e65625eb498e1, type: 2}
-    level: 1
+    level: 6
   evolutions: []

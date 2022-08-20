@@ -13,8 +13,6 @@ public class Monster
     public int NumberDefeated { get; set; }
     public int NumberCaptured { get; set; }
 
-    public float maxHealth;
-
     public int level;
 
     public float expYield = 1;
@@ -96,11 +94,13 @@ public class Monster
 
         CalculateStats();
 
+        ResetStatBoosts();
+
         HP = MaxHP;
     }
 
 
-    void CalculateStats()
+    public void CalculateStats()
     {
         Stats = new Dictionary<Stat, int>();
         Stats.Add(Stat.Attack, Mathf.FloorToInt(Base.Attack * Level / 100f) + 5);
@@ -145,6 +145,19 @@ public class Monster
         Init();
     }
 
+    void ResetStatBoosts()
+    {
+        StatBoosts = new Dictionary<Stat, int>(){
+            {Stat.Attack, 0},
+            {Stat.Defense, 0},
+            {Stat.SpAttack, 0},
+            {Stat.SpDefense, 0},
+            {Stat.Speed, 0},
+             {Stat.Accuracy, 0},
+              {Stat.Evasion, 0},
+        };
+    }
+
     public void IncrementNumberDefeated()
     {
         // Journal.i.UpdateCreatureNumberDefeatedEntry(this);
@@ -157,6 +170,11 @@ public class Monster
 
     public float GetHealth()
     {
-        return maxHealth * (level * 1.15f);
+        return MaxHP * (level * 1.15f);
+    }
+
+    public void Damage(float damage)
+    {
+        HP -= Mathf.FloorToInt(damage);
     }
 }

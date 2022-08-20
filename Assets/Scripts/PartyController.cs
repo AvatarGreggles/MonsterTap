@@ -19,6 +19,7 @@ public class PartyController : MonoBehaviour
     [SerializeField] TMP_Text nameText;
     [SerializeField] TMP_Text levelText;
     [SerializeField] Slider expBar;
+    [SerializeField] Slider healthBar;
 
     [SerializeField] GameObject partyPanel;
     [SerializeField] GameObject attackPanel;
@@ -50,6 +51,19 @@ public class PartyController : MonoBehaviour
 
     }
 
+    public void DamageActiveMonster(int damage)
+    {
+        currentMonster.Damage(damage);
+        healthBar.value = currentMonster.HP;
+
+        if (currentMonster.HP <= 0)
+        {
+            TogglePartyPanel();
+
+            monsterIcon.color = Color.gray;
+        }
+    }
+
     void InitializeParty()
     {
         currentMonster = new Monster(party[currentMonsterIndex], 2);
@@ -61,6 +75,8 @@ public class PartyController : MonoBehaviour
         monsterIcon.sprite = currentMonster.Base.Icon;
         nameText.text = currentMonster.Base.Name;
         levelText.text = "Lvl " + currentMonster.level;
+        healthBar.maxValue = currentMonster.MaxHP;
+        healthBar.value = currentMonster.HP;
         type1Text = type1Sprite.GetComponentInChildren<TMP_Text>();
         type2Text = type2Sprite.GetComponentInChildren<TMP_Text>();
 
@@ -95,6 +111,7 @@ public class PartyController : MonoBehaviour
         SetAttacks(currentMonster);
 
         monsterIcon.sprite = currentMonster.Base.Icon;
+        monsterIcon.color = Color.white;
         nameText.text = currentMonster.Base.Name;
         levelText.text = "Lvl " + currentMonster.level;
         type1Text = type1Sprite.GetComponentInChildren<TMP_Text>();
@@ -112,9 +129,27 @@ public class PartyController : MonoBehaviour
         expBar.maxValue = currentMonster.Base.GetExpForLevel(currentMonster.level);
         expBar.value = currentMonster.Exp;
 
+        healthBar.maxValue = currentMonster.MaxHP;
+        healthBar.value = currentMonster.HP;
+
         TogglePartyPanel();
 
         return activeMonster;
+    }
+
+    public void AddPartyMember(MonsterBase monsterBase)
+    {
+        party.Add(monsterBase);
+
+        foreach (GameObject partyMemberUI in partyMembersUI)
+        {
+            if (partyMemberUI.GetComponent<PartyMemberUI>().currentMonster.Base == null)
+            {
+                Debug.Log("should set");
+                partyMemberUI.GetComponent<PartyMemberUI>().SetMonster(new Monster(monsterBase, 2));
+                return;
+            }
+        }
     }
 
     public void GainExp(int amount)
@@ -196,6 +231,8 @@ public class PartyController : MonoBehaviour
         currentMonster.Exp = difference;
         expBar.value = currentMonster.Exp;
         currentMonster.level++;
+        currentMonster.CalculateStats();
+
         levelText.text = "Lvl " + currentMonster.level;
         expBar.maxValue = currentMonster.Base.GetExpForLevel(currentMonster.level);
 
@@ -212,11 +249,32 @@ public class PartyController : MonoBehaviour
         {
             attackControllers[i].SetAttack(currentMonster.Attacks[i]);
         }
+
+
+        healthBar.maxValue = currentMonster.MaxHP;
+        healthBar.value = currentMonster.HP;
     }
 
     public void TogglePartyPanel()
     {
         partyPanel.SetActive(!partyPanel.activeSelf);
         attackPanel.SetActive(!attackPanel.activeSelf);
+
+        // if (partyPanel.activeSelf)
+        // {
+        //     Time.timeScale = 0;
+        // }
+        // else
+        // {
+        //     Time.timeScale = 1;
+        // }
+    }
+
+    public void HandleActiveMonsterClick()
+    {
+        if (currentMonster.HP > 0)
+        {
+            TogglePartyPanel();
+        }
     }
 }

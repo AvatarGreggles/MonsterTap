@@ -70,4 +70,11 @@ public class GameManager : MonoBehaviour
         stageProgressCounter = 0;
         stageText.text = stage.ToString();
     }
+
+    public float GetBaseAttackSpeed(float monsterSpeed)
+    {
+
+        float modifier = stage * 0.5f;
+        return monsterSpeed / modifier;
+    }
 }
