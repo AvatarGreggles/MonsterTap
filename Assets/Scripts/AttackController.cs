@@ -7,6 +7,7 @@ using TMPro;
 public class AttackController : MonoBehaviour
 {
     Attack attack;
+    [SerializeField] Sprite defaultSprite;
     [SerializeField] Image iconType;
     [SerializeField] TMP_Text nameText;
 
@@ -27,5 +28,12 @@ public class AttackController : MonoBehaviour
         attack = newAttack;
         iconType.sprite = attack.sprite;
         nameText.text = attack.name;
+    }
+
+    public void ClearAttack()
+    {
+        attack = null;
+        iconType.sprite = defaultSprite;
+        nameText.text = "-";
     }
 }

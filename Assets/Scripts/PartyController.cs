@@ -92,6 +92,7 @@ public class PartyController : MonoBehaviour
     {
         activeMonster = currentMonster;
         currentMonster = chosenMonster;
+        SetAttacks(currentMonster);
 
         monsterIcon.sprite = currentMonster.Base.Icon;
         nameText.text = currentMonster.Base.Name;
@@ -102,9 +103,6 @@ public class PartyController : MonoBehaviour
         Color type1Color = GetTypeColor(currentMonster.Base.MonsterType1);
         Color type2Color = GetTypeColor(currentMonster.Base.MonsterType2);
 
-        Debug.Log(type1Color);
-        Debug.Log(type2Color);
-
         type1Sprite.color = type1Color;
         type2Sprite.color = type2Color;
         type1Text.text = currentMonster.Base.MonsterType1.ToString();
@@ -114,11 +112,6 @@ public class PartyController : MonoBehaviour
         expBar.maxValue = currentMonster.Base.GetExpForLevel(currentMonster.level);
         expBar.value = currentMonster.Exp;
 
-        for (int i = 0; i < currentMonster.Attacks.Count; i++)
-        {
-            attackControllers[i].SetAttack(currentMonster.Attacks[i]);
-        }
-
         TogglePartyPanel();
 
         return activeMonster;
@@ -126,15 +119,29 @@ public class PartyController : MonoBehaviour
 
     public void GainExp(int amount)
     {
-        Debug.Log("Gained " + amount + " exp");
-        Debug.Log("Max exp: " + currentMonster.Base.GetExpForLevel(currentMonster.level));
         currentMonster.Exp += amount;
-        Debug.Log("Current exp: " + currentMonster.Exp);
         expBar.value = currentMonster.Exp;
 
         if (currentMonster.Exp >= currentMonster.Base.GetExpForLevel(currentMonster.level))
         {
             GainLevel();
+        }
+    }
+
+    public void SetAttacks(Monster monster)
+    {
+
+        for (int i = 0; i < attackControllers.Count; i++)
+        {
+            if (i < monster.Attacks.Count)
+            {
+                Debug.Log("Setting" + monster.Attacks[i] + monster.Base.Name);
+                attackControllers[i].SetAttack(monster.Attacks[i]);
+            }
+            else
+            {
+                attackControllers[i].ClearAttack();
+            }
         }
     }
 

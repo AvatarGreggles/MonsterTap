@@ -29,8 +29,8 @@ MonoBehaviour:
   expYield: 33
   catchRate: 255
   learnableAttacks:
-  - attackBase: {fileID: 11400000, guid: 6e5c7cabe1ba74cecb6eaaa8b09c37e0, type: 2}
+  - attackBase: {fileID: 11400000, guid: a074234be7a3c4a60bbab68bcc20bdce, type: 2}
     level: 2
-  - attackBase: {fileID: 11400000, guid: cee133078033e41b6a932fa7020bcb35, type: 2}
+  - attackBase: {fileID: 11400000, guid: 6e5c7cabe1ba74cecb6eaaa8b09c37e0, type: 2}
     level: 5
   evolutions: []

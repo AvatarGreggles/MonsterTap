@@ -34,10 +34,10 @@ public class PartyMemberUI : MonoBehaviour
     {
         if (currentMonster != null)
         {
+            Debug.Log("Clicked on " + currentMonster.Base.Name);
             currentMonster = PartyController.instance.SendOutActiveMonster(currentMonster);
             SetMonster(currentMonster);
-
-            Debug.Log("Clicked on " + currentMonster.Base.Name);
+            Debug.Log("It is now a " + currentMonster.Base.Name);
         }
 
     }
