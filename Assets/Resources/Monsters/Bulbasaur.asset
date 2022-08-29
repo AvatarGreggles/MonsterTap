@@ -16,12 +16,12 @@ MonoBehaviour:
   name: Bulbasaur
   description: 
   sprite: {fileID: 0}
-  icon: {fileID: -522572126, guid: ed9123b477cfe4dada8aa2c57ea47ca5, type: 3}
+  icon: {fileID: 21300000, guid: 4dbc5704530cb42efba130d5cc1ee2f6, type: 3}
   cry: {fileID: 0}
   monsterType1: 5
   monsterType2: 8
   maxHP: 30
-  attack: 45
+  attack: 30
   defense: 5
   spAttack: 5
   spDefense: 5

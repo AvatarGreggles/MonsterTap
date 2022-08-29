@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Rattata
   description: 
   sprite: {fileID: 21300000, guid: 473fbce49816a4f5e9cd987b6f315dea, type: 3}
-  icon: {fileID: 1692727466, guid: ed9123b477cfe4dada8aa2c57ea47ca5, type: 3}
+  icon: {fileID: 21300000, guid: 6d35e59386fbc4091a2ab5121550ad0b, type: 3}
   cry: {fileID: 8300000, guid: d47581e96bf4b4e308c69e9d4954c0cd, type: 3}
   monsterType1: 1
   monsterType2: 0
@@ -25,8 +25,8 @@ MonoBehaviour:
   defense: 5
   spAttack: 5
   spDefense: 5
-  speed: 4
-  expYield: 3
+  speed: 5
+  expYield: 2
   catchRate: 255
   learnableAttacks:
   - attackBase: {fileID: 11400000, guid: 6e5c7cabe1ba74cecb6eaaa8b09c37e0, type: 2}

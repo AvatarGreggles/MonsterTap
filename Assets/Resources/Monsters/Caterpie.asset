@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b3c8abf85b074cd3bfb1f77c735dfc2, type: 3}
+  m_Name: Caterpie
+  m_EditorClassIdentifier: 
+  id: 
+  name: Caterpie
+  description: 
+  sprite: {fileID: 21300000, guid: 087c929f72c134366801c03358ce3ff2, type: 3}
+  icon: {fileID: 21300000, guid: d334a5950549347b89cee4c33829f78e, type: 3}
+  cry: {fileID: 8300000, guid: c1e5076b04a4d490c9c88a4c3fcf9c7c, type: 3}
+  monsterType1: 1
+  monsterType2: 0
+  maxHP: 100
+  attack: 1
+  defense: 5
+  spAttack: 5
+  spDefense: 5
+  speed: 5
+  expYield: 2
+  catchRate: 255
+  learnableAttacks:
+  - attackBase: {fileID: 11400000, guid: 6e5c7cabe1ba74cecb6eaaa8b09c37e0, type: 2}
+    level: 1
+  - attackBase: {fileID: 11400000, guid: cee133078033e41b6a932fa7020bcb35, type: 2}
+    level: 4
+  evolutions: []

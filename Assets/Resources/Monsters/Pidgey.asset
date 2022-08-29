@@ -16,7 +16,7 @@ MonoBehaviour:
   name: Pidgey
   description: 
   sprite: {fileID: 21300000, guid: 81920b25217a24d6fb51b929d708bbf3, type: 3}
-  icon: {fileID: -167265251, guid: ed9123b477cfe4dada8aa2c57ea47ca5, type: 3}
+  icon: {fileID: 21300000, guid: 66ec7798c31824416a90c3c67635b6b7, type: 3}
   cry: {fileID: 8300000, guid: 8702e1666ef82435fa9189ee60675934, type: 3}
   monsterType1: 1
   monsterType2: 10
@@ -25,8 +25,8 @@ MonoBehaviour:
   defense: 5
   spAttack: 5
   spDefense: 5
-  speed: 4
-  expYield: 4
+  speed: 1
+  expYield: 3
   catchRate: 255
   learnableAttacks:
   - attackBase: {fileID: 11400000, guid: a074234be7a3c4a60bbab68bcc20bdce, type: 2}

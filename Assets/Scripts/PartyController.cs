@@ -21,6 +21,11 @@ public class PartyController : MonoBehaviour
     [SerializeField] Slider expBar;
     [SerializeField] Slider healthBar;
 
+    [SerializeField] Image activeHealthFill;
+
+    [SerializeField] TMP_Text attackText;
+    [SerializeField] TMP_Text speedText;
+
     [SerializeField] GameObject partyPanel;
     [SerializeField] GameObject attackPanel;
 
@@ -51,10 +56,12 @@ public class PartyController : MonoBehaviour
 
     }
 
-    public void DamageActiveMonster(int damage)
+    public void DamagePlayer(int damage)
     {
         currentMonster.Damage(damage);
         healthBar.value = currentMonster.HP;
+
+        SetHealthBarColor();
 
         if (currentMonster.HP <= 0)
         {
@@ -95,13 +102,29 @@ public class PartyController : MonoBehaviour
         expBar.maxValue = currentMonster.Base.GetExpForLevel(currentMonster.level);
         expBar.value = currentMonster.Exp;
 
+        SetStatText();
+
         for (int i = 0; i < currentMonster.Attacks.Count; i++)
         {
             attackControllers[i].SetAttack(currentMonster.Attacks[i]);
         }
 
+        SetHealthBarColor();
+
         partyPanel.SetActive(false);
         attackPanel.SetActive(true);
+    }
+
+    public void SetHealthBarColor()
+    {
+        if (currentMonster.HP <= currentMonster.MaxHP / 4)
+        {
+            activeHealthFill.color = Color.red;
+        }
+        else if (currentMonster.HP <= currentMonster.MaxHP / 2 && currentMonster.HP > currentMonster.MaxHP / 4)
+        {
+            activeHealthFill.color = Color.yellow;
+        }
     }
 
     public Monster SendOutActiveMonster(Monster chosenMonster)
@@ -131,6 +154,9 @@ public class PartyController : MonoBehaviour
 
         healthBar.maxValue = currentMonster.MaxHP;
         healthBar.value = currentMonster.HP;
+
+        SetStatText();
+
 
         TogglePartyPanel();
 
@@ -253,6 +279,8 @@ public class PartyController : MonoBehaviour
 
         healthBar.maxValue = currentMonster.MaxHP;
         healthBar.value = currentMonster.HP;
+
+        SetStatText();
     }
 
     public void TogglePartyPanel()
@@ -276,5 +304,18 @@ public class PartyController : MonoBehaviour
         {
             TogglePartyPanel();
         }
+    }
+
+    public void SetStatText()
+    {
+        attackText.text = "Attack: " + currentMonster.Attack.ToString();
+        speedText.text = "Speed: " + currentMonster.Speed.ToString();
+    }
+
+    public void HealFull()
+    {
+        currentMonster.HP = currentMonster.MaxHP;
+        healthBar.value = currentMonster.HP;
+        activeHealthFill.color = Color.green;
     }
 }

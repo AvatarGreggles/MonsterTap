@@ -103,11 +103,11 @@ public class Monster
     public void CalculateStats()
     {
         Stats = new Dictionary<Stat, int>();
-        Stats.Add(Stat.Attack, Mathf.FloorToInt(Base.Attack * Level / 100f) + 5);
+        Stats.Add(Stat.Attack, Mathf.FloorToInt(Base.Attack * Level / 100f) + 1);
         Stats.Add(Stat.Defense, Mathf.FloorToInt(Base.Defense * Level / 100f) + 5);
         Stats.Add(Stat.SpAttack, Mathf.FloorToInt(Base.SpAttack * Level / 100f) + 5);
         Stats.Add(Stat.SpDefense, Mathf.FloorToInt(Base.SpDefense * Level / 100f) + 5);
-        Stats.Add(Stat.Speed, Mathf.FloorToInt(Base.Speed * Level / 100f) + 5);
+        Stats.Add(Stat.Speed, Base.Speed);
 
         int oldMaxHP = MaxHP;
 

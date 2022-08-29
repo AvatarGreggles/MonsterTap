@@ -36,7 +36,7 @@ public class MonsterBase : ScriptableObject
 
     public int GetExpForLevel(int level)
     {
-        return 4 * (level * level * level) / 5;
+        return 4 * (level * level * (level * 2)) / 5;
     }
 
 
