@@ -16,7 +16,7 @@ MonoBehaviour:
   description: 
   bgSprite: {fileID: 21300000, guid: dcbaa4815cd8c479b8e3f2643165f178, type: 3}
   music: {fileID: 8300000, guid: 3acf7496cd3ef41a989e69b984eff6e1, type: 3}
-  stageLength: 25
+  stageLength: 3
   monsters:
   - {fileID: 11400000, guid: 226a56047aa0941ccae3d4912935d877, type: 2}
   - {fileID: 11400000, guid: 2efb91fc2703b4813aa47872cd7be0fd, type: 2}
@@ -24,3 +24,5 @@ MonoBehaviour:
   minLevel: 9
   maxLevel: 12
   isTrainer: 0
+  cutscene: {fileID: 0}
+  isCutscene: 0

@@ -40,6 +40,12 @@ public class GameManager : MonoBehaviour
         stageText.text = stage.name.ToString();
         stageProgressText.text = stageProgressCounter + " / " + stage.stageLength;
 
+        if (stage.isCutscene)
+        {
+            gameState = GameState.Cutscene;
+            CutsceneManager.instance.PlayCutscene(stage.cutscene);
+        }
+
     }
 
     // Update is called once per frame
